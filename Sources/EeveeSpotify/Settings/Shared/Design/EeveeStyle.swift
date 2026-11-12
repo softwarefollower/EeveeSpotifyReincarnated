@@ -1,9 +1,9 @@
 import SwiftUI
 
 enum EeveeTheme {
-    static var accent: Color {
-        Color(Theme.color(Theme.accentOrGreen(UserDefaults.accentRGB)))
-    }
+    // Fixed Spotify green. User-selectable accent colours were removed with the
+    // Appearance feature so the tweak does not restyle Spotify's UI on top of Chroma.
+    static let accent = Color(hex: "#1ED760")
 }
 
 struct EeveeSettingsStyle: ViewModifier {

@@ -5,21 +5,28 @@
 **Maintainers:** [jaydenjcpy](https://github.com/jaydenjcpy) & [faroukbmiled](https://github.com/faroukbmiled) & [Mod4](https://github.com/M0d-4) <br />
 **Last Update:** `10/5/26` **Spotify Version:** `9.1.88`
 
-This tweak makes Spotify think you have a Premium subscription, granting free listening, just like Spotilife, and provides some additional features like custom lyrics.
+This tweak makes Spotify think you have a Premium subscription, granting free listening, just like Spotilife.
+
+> [!IMPORTANT]
+> This fork intentionally removes EeveeSpotify's visual/UI features — the Appearance settings and
+> custom lyrics/karaoke providers — because they patch the same Spotify views as
+> [Chroma](https://chroma.pw). Eevee now focuses on Premium patching, ad blocking, session
+> protection, SponsorBlock, flags, and the other non-visual tweaks, so it can run alongside Chroma.
 
 > [!NOTE]
 > The original EeveeSpotify repository was disabled due to a [DMCA takedown](https://github.com/github/dmca/blob/master/2025/08/2025-08-14-spotify.md). This repository will not contain IPA packages in the repo itself.
 
-## Custom Lyrics Support
+## Stripped for Chroma compatibility
 
-**Spotify 9.1.56 and above** - Full custom lyrics functionality is available with the following providers:
-- **SpicyLyrics**
-- **Musixmatch\***
-- **LRCLIB**
-- **Genius**
-- **PetitLyrics**
+The following EeveeSpotify features were removed so they no longer collide with Chroma:
 
-<sup>*Musixmatch requires you to input a user token to retrieve lyrics. EeveeSpotifyReincarnated supports requesting an Anonymous Token to retrieve this functionality.</sup>
+- Appearance: Liquid Glass, themes (AMOLED/accent), rounded artwork, tab bar editor, home
+  gradient/declutter, artist/playlist page layout, player declutter/gestures/haptics, and the
+  Now Playing bar
+- Lyrics: custom lyrics providers, lyrics colours, and the karaoke/word-synced lyrics view
+- Dark pop-ups and the in-app Appearance/Customization settings pages
+
+Chroma provides its own versions of these features. Everything else in EeveeSpotify is unchanged.
 
 ## How to build an EeveeSpotify IPA using Github actions
 > [!NOTE]
@@ -68,21 +75,6 @@ Please refrain from opening issues about the following features, as they are ser
 
 ## [Common Issues](https://github.com/jaydenjcpy/EeveeSpotifyReincarnated/blob/Master/common_issues.md)
 Please check out the hyperlink above before opening an issue
-
-
-## Lyrics Support
-
-EeveeSpotify replaces Spotify monthly limited lyrics with one of the following four lyrics providers:
-
-- Genius: Offers the best quality lyrics, provides the most songs, and updates lyrics the fastest. Does not and will never be time-synced.
-
-- LRCLIB: The most open service, offering time-synced lyrics. However, it lacks lyrics for many songs.
-
-- Musixmatch: The service Spotify uses. Provides time-synced lyrics for many songs, but you'll need a user token to use this source. To obtain the token, download Musixmatch from the App Store, sign up, then go to Settings > Get help > Copy debug info, and paste it into EeveeSpotify alert. You can also extract the token using MITM.
-
-- PetitLyrics: Offers plenty of time-synced Japanese and some international lyrics.
-
-If the tweak is unable to find a song or process the lyrics, you'll see a "Couldn't load the lyrics for this song" message. The lyrics might be wrong for some songs when using Genius due to how the tweak searches songs. While I've made it work in most cases, kindly refrain from opening issues about it.
 
 ## How It Works
 

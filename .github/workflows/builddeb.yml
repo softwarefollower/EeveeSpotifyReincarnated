@@ -86,10 +86,6 @@ jobs:
             -o "$RUNNER_TEMP/bundled-configuration-policy-tests"
           "$RUNNER_TEMP/bundled-configuration-policy-tests"
           swiftc \
-            Tests/CustomTabsActivation/main.swift \
-            -o "$RUNNER_TEMP/custom-tabs-activation-tests"
-          "$RUNNER_TEMP/custom-tabs-activation-tests"
-          swiftc \
             Tests/HookSourceAudit/main.swift \
             -o "$RUNNER_TEMP/hook-source-audit-tests"
           "$RUNNER_TEMP/hook-source-audit-tests"

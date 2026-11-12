@@ -177,7 +177,7 @@ resetSubtitle = "Wipes Spotify keychain, sandbox dirs, and app-group containers.
 resetFooter = "Force re-login. Wipes Spotify keychain entries, sandbox dirs, and app-group containers. Other sideloaded apps untouched. App exits when done.";
 
 // Settings Bar
-eevee_inline_subtitle_text = "Patching, lyrics, customization, and experiments";
+eevee_inline_subtitle_text = "Patching, ad-free listening, and experiments";
 
 // App Icon Chooser
 appIconTitle = "Choose Icon";

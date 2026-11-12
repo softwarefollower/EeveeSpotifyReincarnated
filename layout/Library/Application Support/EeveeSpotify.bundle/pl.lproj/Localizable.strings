@@ -172,7 +172,7 @@ resetSubtitle = "Czyści pęk kluczy Spotify, katalogi piaskownicy i kontenery g
 resetFooter = "Wymusza ponowne logowanie. Czyści wpisy pęku kluczy Spotify, katalogi piaskownicy i kontenery grup aplikacji. Inne aplikacje instalowane poza App Store pozostają nietknięte. Po zakończeniu aplikacja zostanie zamknięta.";
 
 // Settings Bar
-eevee_inline_subtitle_text = "Modyfikacje, teksty utworów, personalizacja i eksperymenty";
+eevee_inline_subtitle_text = "Modyfikacje, odtwarzanie bez reklam i eksperymenty";
 
 // App Icon Chooser
 appIconTitle = "Wybierz ikonę";

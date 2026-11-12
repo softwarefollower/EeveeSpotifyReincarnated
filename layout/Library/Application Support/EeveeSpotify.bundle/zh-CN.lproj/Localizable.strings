@@ -143,7 +143,7 @@ true_shuffle_dec = "阻止 Spotify 免费版的智能随机播放将推荐曲目
 sponsorblock = "SponsorBlock (测试版)";
 appIcon = "应用图标";
 
-eevee_inline_subtitle_text = "补丁、歌词、定制和实验";
+eevee_inline_subtitle_text = "补丁、无广告收听和实验";
 
 // Debug
 

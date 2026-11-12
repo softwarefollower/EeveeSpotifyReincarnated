@@ -177,7 +177,7 @@ resetSubtitle = "Spotify keychain kayıtlarını, sandbox dizinlerini ve app-gro
 resetFooter = "Yeniden giriş yapmaya zorlar. Spotify keychain girdilerini, sandbox dizinlerini ve app-group kapsayıcılarını temizler. Haricen yüklenen diğer uygulamalara dokunulmaz. İşlem bittiğinde uygulama kapanır.";
 
 // Settings Bar
-eevee_inline_subtitle_text = "Yama, şarkı sözleri, kişiselleştirme ve deneyler";
+eevee_inline_subtitle_text = "Yama, reklamsız dinleme ve deneyler";
 
 // App Icon Chooser
 appIconTitle = "Simge Seç";
