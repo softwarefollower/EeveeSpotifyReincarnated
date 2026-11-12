@@ -37,10 +37,6 @@ extension String {
         self ~= "^[a-f0-9]+$"
     }
 
-    var lyricsNoteIfEmpty: String {
-        self.isEmpty ? "♪" : self
-    }
-
     var isRTL: Bool {
         for scalar in unicodeScalars {
             switch scalar.value {

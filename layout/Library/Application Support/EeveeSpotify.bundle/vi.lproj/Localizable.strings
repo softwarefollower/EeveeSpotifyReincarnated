@@ -162,7 +162,7 @@ resetSubtitle = "Xóa chuỗi khóa Spotify (keychain), các thư mục hộp c�
 resetFooter = "Cần phải đăng nhập lại. Xóa các mục chuỗi khóa Spotify, thư mục hộp cát và bộ chứa nhóm ứng dụng. Các ứng dụng được sideload khác không bị ảnh hưởng. Ứng dụng sẽ thoát sau khi hoàn tất.";
 
 // Settings Bar
-eevee_inline_subtitle_text = "Bản vá, lời bài hát, tùy biến và thử nghiệm";
+eevee_inline_subtitle_text = "Bản vá, nghe không quảng cáo và thử nghiệm";
 
 // App Icon Chooser
 appIconTitle = "Chọn biểu tượng";

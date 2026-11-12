@@ -170,7 +170,7 @@ resetSubtitle = "清理 Spotify 鑰匙圈（Keychain）、沙箱（Sandbox）目
 resetFooter = "清理 Spotify 鑰匙圈（Keychain）、沙箱（Sandbox）目錄與應用程式組容器(App-group container)，並會強制重新登錄，完成時將自動退出。不會影響到其他應用程式。";
 
 // Settings Bar
-eevee_inline_subtitle_text = "修補、歌詞、客製化以及實驗性內容";
+eevee_inline_subtitle_text = "修補、無廣告收聽以及實驗性內容";
 
 // App Icon Chooser
 appIconTitle = "選擇圖標";

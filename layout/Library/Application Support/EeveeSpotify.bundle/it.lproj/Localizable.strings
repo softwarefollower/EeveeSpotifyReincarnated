@@ -159,7 +159,7 @@ debug_section_footer = "Attiva la registrazione, poi esporta o cancella il log."
 "resetFooter" = "Forza un nuovo accesso. Svuota le voci del portachiavi di Spotify, le directory sandbox e i container app-group. Le altre app in sideload non subiranno modifiche. L'app si chiuderà al termine.";
 
 // Settings Bar
-eevee_inline_subtitle_text = "Patch, testi, personalizzazioni ed esperimenti";
+eevee_inline_subtitle_text = "Patch, ascolto senza pubblicità ed esperimenti";
 
 // App Icon Chooser
 "appIconTitle" = "Scegli l'icona";

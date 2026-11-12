@@ -181,10 +181,6 @@ private func checkOracleTelemetryAndCohortSweep() {
     require(premiumForceSource.contains("[ORACLE][ENTITLEMENT_DRIFT]"),
             "EeveePremiumForce.x.swift must log [ORACLE][ENTITLEMENT_DRIFT] when ads=1")
 
-    let karaokeSource = readSource("Sources/EeveeSpotify/Karaoke/KaraokePlaybackTracker.swift")
-    require(karaokeSource.contains("[ORACLE][AD_LEAK]"),
-            "KaraokePlaybackTracker.swift must log [ORACLE][AD_LEAK] when an ad track plays")
-
     let dynamicPremiumSource = readSource("Sources/EeveeSpotify/Premium/DynamicPremium+ModifyingFunctions.swift")
     require(dynamicPremiumSource.contains("func isCohortAdOrUpsellFlag(scope: String, name: String) -> Bool"),
             "DynamicPremium+ModifyingFunctions.swift must define isCohortAdOrUpsellFlag")

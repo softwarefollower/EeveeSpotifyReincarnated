@@ -177,7 +177,7 @@ resetSubtitle = "اطلاعات Keychain اسپاتیفای، پوشه‌های 
 resetFooter = "ورود مجدد را اجباری می‌کند. اطلاعات Keychain اسپاتیفای، پوشه‌های Sandbox و کانتینرهای App Group را پاک می‌کند. سایر برنامه‌های سایدلودشده تغییری نمی‌کنند. پس از اتمام، برنامه بسته می‌شود.";
 
 // Settings Bar
-eevee_inline_subtitle_text = "پچ، متن آهنگ، شخصی‌سازی و قابلیت‌های آزمایشی";
+eevee_inline_subtitle_text = "پچ، پخش بدون تبلیغ، و قابلیت‌های آزمایشی";
 
 // App Icon Chooser
 appIconTitle = "انتخاب آیکون";

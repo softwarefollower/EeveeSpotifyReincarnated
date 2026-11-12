@@ -162,7 +162,7 @@ resetSubtitle = "مسح الـ Keychain والـ Sandbox وفولدرات الت
 resetFooter = "مسح الـ Keychain والـ Sandbox وفولدرات التطبيق (App-group container) لـ Spotify، وهيخرجك ويقفل التطبيق إجباري عشان يطبق التغييرات. مش هيأثر على أي تطبيقات تانية.";
 
 // Settings Bar
-eevee_inline_subtitle_text = "تعديلات، كلمات أغاني، تخصيص ومميزات تجريبية";
+eevee_inline_subtitle_text = "تعديلات، استماع بدون إعلانات، ومميزات تجريبية";
 
 // App Icon Chooser
 appIconTitle = "اختار الأيقونة";

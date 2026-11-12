@@ -61,21 +61,6 @@ class HttpClientURLSessionHook: ClassHook<NSObject>, SpotifySessionDelegate {
         }
 
         do {
-            if url.isLyrics {
-                let originalLyrics = try? Lyrics(serializedBytes: buffer)
-
-                let semaphore = DispatchSemaphore(value: 0)
-                var customLyricsData: Data?
-                DispatchQueue.global(qos: .userInitiated).async {
-                    customLyricsData = try? getLyricsDataForCurrentTrack(url.path, originalLyrics: originalLyrics)
-                    semaphore.signal()
-                }
-                _ = semaphore.wait(timeout: .now() + .milliseconds(18000))
-                orig.URLSession(session, dataTask: task, didReceiveData: customLyricsData ?? buffer)
-                orig.URLSession(session, task: task, didCompleteWithError: nil)
-                return
-            }
-
             if let result = try SpotifyResponsePatcher.patch(url: url, buffer: buffer) {
                 writeDebugLog("[HCUS] Patched \(result.tag.rawValue)")
                 orig.URLSession(session, dataTask: task, didReceiveData: result.data)
@@ -97,48 +82,27 @@ class HttpClientURLSessionHook: ClassHook<NSObject>, SpotifySessionDelegate {
         didReceiveResponse response: HTTPURLResponse,
         completionHandler handler: @escaping (URLSession.ResponseDisposition) -> Void
     ) {
-        if let url = task.currentRequest?.url, url.isCustomize, response.statusCode == 304 {
-            // Warm relaunch: customize revalidates via ETag and returns 304 with no
-            // body. The in-memory cache is empty in a fresh process, so fall back to
-            // the persisted copy of the last patched response. Synthesizing a 200 and
-            // replaying it keeps Spotify's disk-cached UNPATCHED config (ad flags) from
-            // being consumed — the fingerprint behind relaunch crash/ads reports.
-            // With no persisted copy yet (first-ever launch edge case) the 304 passes
-            // through untouched; the next real 200 gets patched and persists.
-            if let cached = SpotifyResponsePatcher.cachedCustomizeData
-                ?? UserDefaults.cachedCustomizeData,
-               let synthetic = HTTPURLResponse(url: url, statusCode: 200, httpVersion: "2.0", headerFields: [:]) {
-                orig.URLSession(session, dataTask: task, didReceiveResponse: synthetic, completionHandler: handler)
-                orig.URLSession(session, dataTask: task, didReceiveData: cached)
-                SpotifyResponsePatcher.markCustomizeTaskHandled(task.taskIdentifier)
-                return
-            }
+        guard let url = task.currentRequest?.url, url.isCustomize, response.statusCode == 304 else {
             orig.URLSession(session, dataTask: task, didReceiveResponse: response, completionHandler: handler)
             return
         }
 
-        guard let url = task.currentRequest?.url, url.isLyrics, response.statusCode != 200 else {
-            orig.URLSession(session, dataTask: task, didReceiveResponse: response, completionHandler: handler)
+        // Warm relaunch: customize revalidates via ETag and returns 304 with no
+        // body. The in-memory cache is empty in a fresh process, so fall back to
+        // the persisted copy of the last patched response. Synthesizing a 200 and
+        // replaying it keeps Spotify's disk-cached UNPATCHED config (ad flags) from
+        // being consumed — the fingerprint behind relaunch crash/ads reports.
+        // With no persisted copy yet (first-ever launch edge case) the 304 passes
+        // through untouched; the next real 200 gets patched and persists.
+        if let cached = SpotifyResponsePatcher.cachedCustomizeData
+            ?? UserDefaults.cachedCustomizeData,
+           let synthetic = HTTPURLResponse(url: url, statusCode: 200, httpVersion: "2.0", headerFields: [:]) {
+            orig.URLSession(session, dataTask: task, didReceiveResponse: synthetic, completionHandler: handler)
+            orig.URLSession(session, dataTask: task, didReceiveData: cached)
+            SpotifyResponsePatcher.markCustomizeTaskHandled(task.taskIdentifier)
             return
         }
-
-        // Fetch on a background queue while holding the completion handler open.
-        // Calling getLyricsDataForCurrentTrack synchronously here would block the
-        // delegate queue and prevent subsequent delegate callbacks from firing.
-        DispatchQueue.global(qos: .userInitiated).async { [self] in
-            let data = try? getLyricsDataForCurrentTrack(url.path)
-
-            guard let lyricsData = data,
-                  let ok = HTTPURLResponse(url: url, statusCode: 200, httpVersion: "2.0", headerFields: [:]) else {
-                handler(.allow)
-                orig.URLSession(session, dataTask: task, didReceiveResponse: response, completionHandler: { _ in })
-                return
-            }
-
-            orig.URLSession(session, dataTask: task, didReceiveResponse: ok, completionHandler: handler)
-            orig.URLSession(session, dataTask: task, didReceiveData: lyricsData)
-            orig.URLSession(session, task: task, didCompleteWithError: nil)
-        }
+        orig.URLSession(session, dataTask: task, didReceiveResponse: response, completionHandler: handler)
     }
 
     func URLSession(
