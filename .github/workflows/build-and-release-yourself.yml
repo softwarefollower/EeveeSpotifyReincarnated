@@ -29,7 +29,7 @@ env:
 
 jobs:
   inject:
-    runs-on: macos-latest
+    runs-on: macos-15-intel
     permissions:
       contents: write
     steps:
